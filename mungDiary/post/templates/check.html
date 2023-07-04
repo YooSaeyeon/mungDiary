@@ -1,0 +1,323 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수정및 확인</title>
+  </head>
+  <style>
+    #contain {
+      margin-left: 38%;
+      width: 390px;
+      height: 990px;
+      background: #eaeaea;
+    }
+
+    #trash-img {
+      margin-left: 30px;
+      margin-top: 30px;
+    }
+
+    #reset {
+      position: absolute;
+      margin-top: 35px;
+      margin-left: 3px;
+      width: 42px;
+      height: 28px;
+
+      border: none;
+      border-radius: 8px;
+      background: #bcbcbc;
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    #date {
+      width: 263px;
+      height: 50px;
+      flex-direction: column;
+
+      margin-top: 25px;
+      margin-left: 55px;
+
+      color: #4c7343;
+      text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+      font-size: 22px;
+      font-family: Noto Sans;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    #line {
+      margin-top: 2px;
+      margin-bottom: 7px;
+      margin-left: 10px;
+      width: 300px;
+      height: 2px;
+      background: #9bce8f;
+    }
+
+    #content {
+      margin-left: 30px;
+      margin-top: 10px;
+      font-size: 16px;
+      width: 250px;
+      height: 180px;
+      border: none;
+      resize: none;
+
+      text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      font-size: 16px;
+      font-family: Noto Sans;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    #comentNum {
+      display: flex;
+      width: 135px;
+      height: 22px;
+
+      margin-left: 32px;
+
+      color: #000;
+      text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+      font-size: 16px;
+      font-family: Inter;
+      font-weight: 600;
+    }
+    #coment {
+      width: 315px;
+      height: 75px;
+
+      margin-left: 35px;
+
+      border: none;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .coment-img {
+      margin-left: 26px;
+      margin-top: 20px;
+    }
+
+    .coment-name {
+      width: 53px;
+      height: 25px;
+
+      margin-top: -48px;
+      margin-left: 74px;
+
+      color: #4c7343;
+      text-shadow: 2.5px 2.5px 3px rgba(0, 0, 0, 0.25);
+      font-size: 16px;
+      font-family: Noto Sans;
+      font-weight: 700;
+    }
+
+    .coment-write {
+      width: 192px;
+      height: 50px;
+
+      margin-left: 75px;
+      margin-top: -20px;
+
+      color: #000;
+      font-weight: 600;
+      font-size: 13px;
+      font-family: Noto Sans;
+    }
+
+    #white-box {
+      display: inline-block;
+      margin-top: 30px;
+      margin-left: 30px;
+      margin-right: -45px;
+      width: 320px;
+      height: 500px;
+
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+    #coment1 {
+      margin: 13px auto;
+      width: 318px;
+      height: 79px;
+      flex-shrink: 0;
+
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    #coment2 {
+      margin: 20px auto;
+      width: 318px;
+      height: 79px;
+      flex-shrink: 0;
+
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    #green {
+      position: relative;
+      margin-top: 20px;
+      padding: 15px;
+      width: 360px;
+      height: 165px;
+
+      border-radius: 15px 15px 0px 0px;
+      background: #aad6a0;
+      box-shadow: -5px -5px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    #cal {
+      margin-top: 8px;
+      margin-left: 70px;
+    }
+    #circle {
+      position: relative;
+      margin-left: 9px;
+      margin-bottom: 3px;
+      padding: 5px;
+    }
+
+    #book {
+      position: relative;
+      padding-bottom: 17px;
+      margin-left: -60px;
+    }
+
+    #tong {
+      padding: 5px;
+      margin: 10px;
+      margin-left: 30px;
+      margin-bottom: 13px;
+    }
+
+    #green-section2 {
+      margin-top: 50px;
+      height: 80px;
+    }
+
+    #home {
+      margin-left: 14px;
+    }
+
+    #setting {
+      margin-left: 255px;
+    }
+  </style>
+  <body>
+    <div id="contain">
+      <div id="header">
+        <a href="{% url 'post_delete' post.id %}">
+        <img
+          id="trash-img"
+          src="/static/images/mdi_trash-can.png"
+          style="width: 40px; height: 40px"
+          onclick="delBtn()"
+        /></a>
+        <button id="reset"><a href="{% url 'post_update' post.id %}"><b>수정</b></a></button>
+      </div>
+
+      <div id="white-box">
+        <div id="date">{{post.created_at}}</div>
+        <div id="line"></div>
+        {% if post.photo %}
+          <img src = "{{ post.photo.url }}" alt="" height="240">
+        {% endif %}
+        <div>
+          {{post.body}}
+        </div>
+      </div>
+
+      <!--댓글 박스 부분 css 적용-->
+      <div id="comment-box">
+        <p id="comentNum">댓글(2)</p>
+        <div id="send-box">
+          <form method="POST" action="{% url 'create_comment' post.id %}">
+            {% csrf_token %}
+            <input type="text" name="comment" id="comment" placeholder="댓글을 입력해주세요" />
+            <div id="btn-box">
+              <input type="submit" value="댓글 작성">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {% for comment in post.comment_set.all %}
+      <div id="coment1">
+        <!--댓글 사진, 이것도 수정해야됨. 사진 안 뜸-->
+        <p class="coment-img" style="width: 40px; height: 40px">{{ comment.photo }}</p>
+        <!--댓글 작성자 추가해야됨-->
+        <!--댓글 내용-->
+        <div class="coment-write">{{ comment }}<br>
+        <a href="{% url 'update_comment' post.id comment.id %}"> 수정 </a>
+        <a href="{% url 'delete_comment' post.id comment.id %}"> 삭제 </a>
+        </div>
+      </div>
+      {% endfor %}
+
+
+      <div id="green">
+        <div id="green-section1">
+          <span>
+            <img
+              id="cal"
+              src="/static/images/cal.png"
+              style="width: 65px; height: 65px"
+            />
+          </span>
+          <span>
+            <img
+              id="circle"
+              src="/static/images/circle.png"
+              style="width: 60px; height: 60px"
+            />
+          </span>
+          <span>
+            <img
+              id="book"
+              src="/static/images/book.png"
+              style="width: 40px; height: 40px"
+            />
+          </span>
+          <span>
+            <img
+              id="tong"
+              src="/static/images/static.png"
+              style="width: 37px; height: 37px"
+            />
+          </span>
+        </div>
+        <div id="green-section2">
+          <span id="home">
+            <img
+              src="/static/images/home.png"
+              style="width: 30px; height: 30px"
+            />
+          </span>
+          <span id="setting">
+            <img
+              src="/static/images/setting.png"
+              style="width: 30px; height: 30px"
+            />
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <script src="static/js/edit.js"></script>
+    <script src="static/js/del.js"></script>
+    <script src="static/js/check.js"></script>
+  </body>
+</html>
